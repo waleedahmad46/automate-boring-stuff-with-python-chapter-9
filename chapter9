@@ -1,0 +1,478 @@
+Exercise 9-1: Restaurant Prompt: Create a Restaurant class with attributes restaurant_name and cuisine_type. Include a method describe_restaurant() that prints these attributes and a method open_restaurant() that prints a message indicating the restaurant is open. Create an instance and call both methods.
+
+Solution:
+
+class Restaurant:
+    """A simple representation of a restaurant."""
+
+    def _init_(self, restaurant_name, cuisine_type):
+        self.restaurant_name = restaurant_name.title()
+        self.cuisine_type = cuisine_type.lower()
+
+    def describe_restaurant(self):
+        """Print the restaurant’s name and cuisine type."""
+        print(f"Restaurant Name: {self.restaurant_name}")
+        print(f"Cuisine Type: {self.cuisine_type.title()}")
+
+    def open_restaurant(self):
+        """Indicate that the restaurant is open."""
+        print(f"{self.restaurant_name} is now open!")
+
+# Example usage
+restaurant = Restaurant('pasta palace', 'italian')
+restaurant.describe_restaurant()
+restaurant.open_restaurant()
+
+Exercise 9-2: Three Restaurants Prompt: Using the Restaurant class from 9-1, create three different instances and call describe_restaurant() for each.
+
+Solution:
+
+# Using Restaurant class defined in Exercise 9-1
+restaurant1 = Restaurant('burger barn', 'american')
+restaurant2 = Restaurant('sushi spot', 'japanese')
+restaurant3 = Restaurant('taco town', 'mexican')
+
+restaurant1.describe_restaurant()
+restaurant2.describe_restaurant()
+restaurant3.describe_restaurant()
+Exercise 9-3: Users Prompt: Create a User class with attributes first_name, last_name, age, and location. Include methods describe_user() to print user info and greet_user() to print a personalized greeting. Create two instances and call both methods for each.
+
+Solution:
+
+class User:
+    """A simple representation of a user."""
+
+    def _init_(self, first_name, last_name, age, location):
+        self.first_name = first_name.title()
+        self.last_name = last_name.title()
+        self.age = age
+        self.location = location.title()
+
+    def describe_user(self):
+        """Print user information."""
+        print(f"Name: {self.first_name} {self.last_name}")
+        print(f"Age: {self.age}")
+        print(f"Location: {self.location}")
+
+    def greet_user(self):
+        """Print a personalized greeting to the user."""
+        print(f"Hello, {self.first_name}! Welcome back.")
+
+# Example usage
+user1 = User('alice', 'smith', 30, 'new york')
+user2 = User('bob', 'johnson', 45, 'chicago')
+
+user1.describe_user()
+user1.greet_user()
+print()
+user2.describe_user()
+user2.greet_user()
+
+
+---
+
+Exercise 9-4: Number Served Prompt: Begin with the Restaurant class from 9-1. Add an attribute number_served with a default value of 0. Write a method set_number_served() to set this value and another method increment_number_served() to increment it. Create an instance, print number_served, set it to a new number, and increment it.
+
+Solution:
+
+class Restaurant:
+    """A simple representation of a restaurant with served count."""
+
+    def _init_(self, restaurant_name, cuisine_type):
+        self.restaurant_name = restaurant_name.title()
+        self.cuisine_type = cuisine_type.lower()
+        self.number_served = 0
+
+    def describe_restaurant(self):
+        print(f"Restaurant Name: {self.restaurant_name}")
+        print(f"Cuisine Type: {self.cuisine_type.title()}")
+
+    def open_restaurant(self):
+        print(f"{self.restaurant_name} is now open!")
+
+    def set_number_served(self, number):
+        """Set the number of customers served."""
+        if number >= 0:
+            self.number_served = number
+        else:
+            print("Number served cannot be negative.")
+
+    def increment_number_served(self, additional):
+        """Increment the number of customers served."""
+        if additional >= 0:
+            self.number_served += additional
+        else:
+            print("Cannot increment by a negative number.")
+
+# Example usage
+restaurant = Restaurant('pasta palace', 'italian')
+print(f"Customers served: {restaurant.number_served}")
+restaurant.set_number_served(50)
+print(f"Customers served: {restaurant.number_served}")
+restaurant.increment_number_served(20)
+print(f"Customers served: {restaurant.number_served}")
+
+
+---
+
+Exercise 9-5: Login Attempts Prompt: Start with the User class from 9-3. Add an attribute login_attempts initialized to 0. Write a method increment_login_attempts() to increment this value and a method reset_login_attempts() to reset it to 0. Create an instance, call increment_login_attempts() several times, print the value, then reset and print again.
+
+Solution:
+
+class User:
+    """A simple representation of a user with login attempts."""
+
+    def _init_(self, first_name, last_name, age, location):
+        self.first_name = first_name.title()
+        self.last_name = last_name.title()
+        self.age = age
+        self.location = location.title()
+        self.login_attempts = 0
+
+    def describe_user(self):
+        print(f"Name: {self.first_name} {self.last_name}")
+        print(f"Age: {self.age}")
+        print(f"Location: {self.location}")
+
+    def greet_user(self):
+        print(f"Hello, {self.first_name}! Welcome back.")
+
+    def increment_login_attempts(self):
+        """Increment the login attempts by 1."""
+        self.login_attempts += 1
+
+    def reset_login_attempts(self):
+        """Reset login attempts to 0."""
+        self.login_attempts = 0
+
+# Example usage
+user = User('alice', 'smith', 30, 'new york')
+user.increment_login_attempts()
+user.increment_login_attempts()
+user.increment_login_attempts()
+print(f"Login attempts: {user.login_attempts}")
+user.reset_login_attempts()
+print(f"Login attempts after reset: {user.login_attempts}")
+
+
+---
+
+Exercise 9-6: Ice Cream Stand Prompt: An ice cream stand is a specific kind of restaurant. Create a class IceCreamStand that inherits from Restaurant. Add an attribute flavors that stores a list of ice cream flavors. Write a method display_flavors() that prints these flavors. Create an instance and call display_flavors().
+
+Solution:
+
+class Restaurant:
+    """A simple representation of a restaurant."""
+
+    def _init_(self, restaurant_name, cuisine_type):
+        self.restaurant_name = restaurant_name.title()
+        self.cuisine_type = cuisine_type.lower()
+
+    def describe_restaurant(self):
+        print(f"Restaurant Name: {self.restaurant_name}")
+        print(f"Cuisine Type: {self.cuisine_type.title()}")
+
+    def open_restaurant(self):
+        print(f"{self.restaurant_name} is now open!")
+
+class IceCreamStand(Restaurant):
+    """Represent an ice cream stand, a specific kind of restaurant."""
+
+    def _init_(self, restaurant_name, cuisine_type='ice cream'):
+        super()._init_(restaurant_name, cuisine_type)
+        self.flavors = []
+
+    def display_flavors(self):
+        """Print the list of available flavors."""
+        print(f"Flavors available at {self.restaurant_name}:")
+        for flavor in self.flavors:
+            print(f"- {flavor.title()}")
+
+# Example usage
+ice_cream_stand = IceCreamStand('frosty treats')
+ice_cream_stand.flavors = ['vanilla', 'chocolate', 'strawberry']
+ice_cream_stand.display_flavors()
+
+
+---
+
+Exercise 9-7: Admin Prompt: An admin user has special privileges. Create an Admin class that inherits from User. Add an attribute privileges that stores a list of strings. Write a method show_privileges() that prints these. Create an instance and call show_privileges().
+
+Solution:
+
+class User:
+    """A simple representation of a user."""
+
+    def _init_(self, first_name, last_name, age, location):
+        self.first_name = first_name.title()
+        self.last_name = last_name.title()
+        self.age = age
+        self.location = location.title()
+
+    def describe_user(self):
+        print(f"Name: {self.first_name} {self.last_name}")
+        print(f"Age: {self.age}")
+        print(f"Location: {self.location}")
+
+    def greet_user(self):
+        print(f"Hello, {self.first_name}! Welcome back.")
+
+class Admin(User):
+    """Represent an admin user with special privileges."""
+
+    def _init_(self, first_name, last_name, age, location):
+        super()._init_(first_name, last_name, age, location)
+        self.privileges = []
+
+    def show_privileges(self):
+        """Print the list of admin privileges."""
+        print(f"Privileges for {self.first_name}:")
+        for privilege in self.privileges:
+            print(f"- {privilege}")
+
+# Example usage
+admin_user = Admin('alice', 'smith', 30, 'new york')
+admin_user.privileges = ['can add post', 'can delete post', 'can ban user']
+admin_user.show_privileges()
+
+
+---
+
+Exercise 9-8: Privileges Prompt: Write a separate Privileges class. Move the show_privileges() method to this class and make privileges an attribute. In Admin, include an instance of Privileges. Create an Admin and call admin.privileges.show_privileges().
+
+Solution:
+
+class Privileges:
+    """A class to store an admin’s privileges."""
+
+    def _init_(self, privileges=None):
+        if privileges is None:
+            privileges = []
+        self.privileges = privileges
+
+    def show_privileges(self):
+        """Print the list of privileges."""
+        print("Admin privileges:")
+        for privilege in self.privileges:
+            print(f"- {privilege}")
+
+class User:
+    """A simple representation of a user."""
+
+    def _init_(self, first_name, last_name, age, location):
+        self.first_name = first_name.title()
+        self.last_name = last_name.title()
+        self.age = age
+        self.location = location.title()
+
+    def describe_user(self):
+        print(f"Name: {self.first_name} {self.last_name}")
+        print(f"Age: {self.age}")
+        print(f"Location: {self.location}")
+
+    def greet_user(self):
+        print(f"Hello, {self.first_name}! Welcome back.")
+
+class Admin(User):
+    """Represent an admin user with special privileges."""
+
+    def _init_(self, first_name, last_name, age, location):
+        super()._init_(first_name, last_name, age, location)
+        self.privileges = Privileges()
+
+# Example usage
+admin_user = Admin('alice', 'smith', 30, 'new york')
+admin_user.privileges.privileges = [
+    'can add post', 'can delete post', 'can ban user'
+]
+admin_user.privileges.show_privileges()
+
+
+---
+
+Exercise 9-9: Battery Upgrade Prompt: Start with a Car class and an ElectricCar subclass. Write a Battery class with attribute battery_size (default 70) and methods describe_battery() and get_range(). Add method upgrade_battery() that sets battery size to 85 if it’s not already. Create an ElectricCar and call these methods.
+
+Solution:
+
+class Car:
+    """A simple attempt to represent a car."""
+
+    def _init_(self, make, model, year):
+        self.make = make.title()
+        self.model = model.title()
+        self.year = year
+
+    def get_descriptive_name(self):
+        """Return a neatly formatted descriptive name."""
+        return f"{self.year} {self.make} {self.model}"
+
+class Battery:
+    """A simple attempt to model a battery for an electric car."""
+
+    def _init_(self, battery_size=70):
+        self.battery_size = battery_size
+
+    def describe_battery(self):
+        """Print a statement describing the battery size."""
+        print(f"This car has a {self.battery_size}-kWh battery.")
+
+    def get_range(self):
+        """Print a statement about the range this battery provides."""
+        if self.battery_size == 70:
+            range_miles = 240
+        elif self.battery_size == 85:
+            range_miles = 270
+        print(f"This car can go approximately {range_miles} miles on a full charge.")
+
+    def upgrade_battery(self):
+        """Upgrade the battery if possible."""
+        if self.battery_size < 85:
+            self.battery_size = 85
+
+class ElectricCar(Car):
+    """Represent aspects of a car specific to electric vehicles."""
+
+    def _init_(self, make, model, year):
+        super()._init_(make, model, year)
+        self.battery = Battery()
+
+# Example usage
+electric_car = ElectricCar('tesla', 'model s', 2020)
+electric_car.battery.describe_battery()
+electric_car.battery.get_range()
+electric_car.battery.upgrade_battery()
+electric_car.battery.describe_battery()
+electric_car.battery.get_range()
+
+
+---
+
+Exercise 9-10: Imported Restaurant Prompt: Put the Restaurant class from 9-1 in a separate file restaurant.py. Write another file that imports Restaurant and makes an instance. Print its attributes.
+
+Solution:
+
+restaurant.py
+
+class Restaurant:
+    def _init_(self, restaurant_name, cuisine_type):
+        self.restaurant_name = restaurant_name.title()
+        self.cuisine_type = cuisine_type.lower()
+
+    def describe_restaurant(self):
+        print(f"Restaurant Name: {self.restaurant_name}")
+        print(f"Cuisine Type: {self.cuisine_type.title()}")
+
+    def open_restaurant(self):
+        print(f"{self.restaurant_name} is now open!")
+
+example.py
+
+from restaurant import Restaurant
+
+my_restaurant = Restaurant('pasta palace', 'italian')
+my_restaurant.describe_restaurant()
+my_restaurant.open_restaurant()
+
+
+---
+
+Exercise 9-11: Imported Admin Prompt: Put User, Privileges, and Admin classes in one file user.py. Create another file that imports Admin and makes an instance. Call show_privileges().
+
+Solution:
+
+user.py
+
+class Privileges:
+    def _init_(self, privileges=None):
+        if privileges is None:
+            privileges = []
+        self.privileges = privileges
+
+    def show_privileges(self):
+        print("Admin privileges:")
+        for privilege in self.privileges:
+            print(f"- {privilege}")
+
+class User:
+    def _init_(self, first_name, last_name, age, location):
+        self.first_name = first_name.title()
+        self.last_name = last_name.title()
+        self.age = age
+        self.location = location.title()
+
+    def describe_user(self):
+        print(f"Name: {self.first_name} {self.last_name}")
+        print(f"Age: {self.age}")
+        print(f"Location: {self.location}")
+
+    def greet_user(self):
+        print(f"Hello, {self.first_name}! Welcome back.")
+
+class Admin(User):
+    def _init_(self, first_name, last_name, age, location):
+        super()._init_(first_name, last_name, age, location)
+        self.privileges = Privileges()
+
+example_admin.py
+
+from user import Admin
+
+admin_user = Admin('alice', 'smith', 30, 'new york')
+admin_user.privileges.privileges = [
+    'can add post', 'can delete post', 'can ban user'
+]
+admin_user.privileges.show_privileges()
+
+
+---
+
+Exercise 9-12: Multiple Modules Prompt: Put Car and Battery classes in car.py, and ElectricCar in electric_car.py. Write a separate file to import and use the ElectricCar.
+
+Solution:
+
+car.py
+
+class Car:
+    def _init_(self, make, model, year):
+        self.make = make.title()
+        self.model = model.title()
+        self.year = year
+
+    def get_descriptive_name(self):
+        return f"{self.year} {self.make} {self.model}"
+
+class Battery:
+    def _init_(self, battery_size=70):
+        self.battery_size = battery_size
+
+    def describe_battery(self):
+        print(f"This car has a {self.battery_size}-kWh battery.")
+
+    def get_range(self):
+        if self.battery_size == 70:
+            range_miles = 240
+        elif self.battery_size == 85:
+            range_miles = 270
+        print(f"This car can go approximately {range_miles} miles on a full charge.")
+
+    def upgrade_battery(self):
+        if self.battery_size < 85:
+            self.battery_size = 85
+
+electric_car.py
+
+from car import Car, Battery
+
+class ElectricCar(Car):
+    def _init_(self, make, model, year):
+        super()._init_(make, model, year)
+        self.battery = Battery()
+
+example_electric.py
+
+from electric_car import ElectricCar
+
+my_electric_car = ElectricCar('tesla', 'model s', 2020)
+print(my_electric_car.get_descriptive_name())
+my_electric_car.battery.describe_battery()
+my_electric_car.battery.get_range()
